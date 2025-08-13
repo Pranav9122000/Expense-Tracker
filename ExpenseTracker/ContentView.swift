@@ -15,6 +15,13 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
         }
+        .onAppear {
+            if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+                print("✅ API_KEY from xcconfig: \(apiKey)")
+            } else {
+                print("❌ API_KEY not found in Info.plist")
+            }
+        }
         .padding()
     }
 }

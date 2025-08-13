@@ -1,0 +1,11 @@
+//
+//  Staging.xcconfig
+//  ExpenseTracker
+//
+//  Created by Pranav.kulkarni on 24/07/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+API_KEY = dfnsldknflknsdlkfnvd
