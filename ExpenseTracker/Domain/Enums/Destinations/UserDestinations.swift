@@ -12,4 +12,5 @@ enum UserDestinations: Hashable {
     case expenseList
     case incomeList
     case profile
+    case editProfile
 }

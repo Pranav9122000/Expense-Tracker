@@ -18,7 +18,8 @@ class AppRootViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        validateTokens()
+        flow = .dashboard
+        //validateTokens()
     }
     
     func validateTokens() {

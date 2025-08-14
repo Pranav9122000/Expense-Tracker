@@ -7,12 +7,17 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class ProfileViewModel: ObservableObject {
     @Published var user: UserModel? = nil
     @Published var loadingState: LoadingState<ProfileResponseModel> = .idle
     @Published var isError: Bool = false
     @Published var errorMessage: String = ""
+    @Published var profileImage: UIImage? = nil
+    @Published var userName: String = ""
+    @Published var email: String = ""
+    @Published var phoneNumber: String = ""
     
     private let repository: ProfileRepositoryProtocol
     private var cancellables = Set<AnyCancellable>()

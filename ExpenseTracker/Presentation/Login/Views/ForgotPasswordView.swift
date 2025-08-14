@@ -76,19 +76,10 @@ struct ForgotPasswordView: View {
                 }
             }
         }
-        .overlay {
-            if viewModel.loadingState == .loading {
-                ProgressView()
-                    .scaleEffect(2)
-                    .padding(30)
-                    .background(.ultraThinMaterial, in: .rect(cornerRadius: 20))
-                    .transition(.scale)
-            }
-        }
-        .alert(viewModel.errorMessage, isPresented: $viewModel.isError) {
-                    Button("OK", role: .cancel) { }
-        } message: {
-            
+        .loadingOverlay(isLoading: viewModel.loadingState == .loading)
+        .errorAlert(isPresented: $viewModel.isError, message: viewModel.errorMessage) {
+            viewModel.isError = false
+            viewModel.errorMessage = ""
         }
     }
     

@@ -46,6 +46,10 @@ struct HomeView: View {
                 ForEach(viewModel.transactions) { transaction in
                     TransactionCardView(transaction: transaction)
                 }
+                
+                ForEach(1..<12) { _ in
+                    TransactionCardView(transaction: DummyData.transaction)
+                }
             }.scrollIndicators(.hidden)
             
             Spacer()
@@ -54,22 +58,10 @@ struct HomeView: View {
         .onAppear {
             viewModel.getDashboardData()
         }
-        .overlay {
-            if viewModel.loadingState == .loading {
-                ProgressView()
-                    .scaleEffect(2)
-                    .padding(30)
-                    .background(.ultraThinMaterial, in: .rect(cornerRadius: 20))
-                    .transition(.scale)
-            }
-        }
-        .alert(viewModel.errorMessage, isPresented: $viewModel.isError) {
-            Button("OK", role: .cancel) {
-                viewModel.isError = false
-                viewModel.errorMessage = ""
-            }
-        } message: {
-            
+        .loadingOverlay(isLoading: viewModel.loadingState == .loading)
+        .errorAlert(isPresented: $viewModel.isError, message: viewModel.errorMessage) {
+            viewModel.isError = false
+            viewModel.errorMessage = ""
         }
     }
 }
